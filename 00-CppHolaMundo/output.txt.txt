@@ -1,0 +1,4 @@
+PS C:\Users\Bruno> cd 'c:\Users\Bruno\Desktop\Documentos\Code\output'
+PS C:\Users\Bruno\Desktop\Documentos\Code\output> & .\'Untitled-2.exe'
+Hello Wold!
+PS C:\Users\Bruno\Desktop\Documentos\Code\output> 
