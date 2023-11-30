@@ -89,7 +89,7 @@ int main(){
 // Desarrollo de funciones
 
 double GetDistancia(const Punto& punto1, const Punto& punto2){                                      
-    return (std::sqrt(std::pow(punto2.x - punto1.x, 2) + std::pow(punto2.y - punto1.y, 2)));
+    return (std::sqrt(std::pow(punto2.x - punto1.x, 2) + std::pow(punto2.y - punto1.y, 2))); //Raiz cuadrada y potencia
 }
 
 double Absoluto(double x){
@@ -99,16 +99,16 @@ double Absoluto(double x){
 double GetPerimetro(const Poligono& poligono){
     double perimetro {};
 
-    for(unsigned i{}; i < poligono.n - 1; i++)
+    for(unsigned i{}; i < poligono.n - 1; i++)    //itera vertices
         perimetro += GetDistancia(poligono.puntos.at(i), poligono.puntos.at(i + 1));
 
-    perimetro += GetDistancia(poligono.puntos.at((poligono.n) - 1), poligono.puntos.at(0));
+    perimetro += GetDistancia(poligono.puntos.at((poligono.n) - 1), poligono.puntos.at(0));    //ultimo vertice y primer vertice
 
     return perimetro;
 }
 
 bool AreNear(const double a, const double b, const double tolerance){                         
-    return Absoluto(a-b) < tolerance;
+    return Absoluto(a-b) < tolerance;    //si diferencia entre a y b menor que tolerancia => cercanos
 }
 
 /*bool AreNear(const double a, const double b, const double delta){
@@ -121,9 +121,9 @@ unsigned GetCantidadDeLados(const Poligono& poligono){
 }
 
 int GetPosicionPorPunto(const Poligono& poligono, const Punto& punto){
-    for(unsigned i{}; i<poligono.n; i++){
-        if(poligono.puntos.at(i).x == punto.x and poligono.puntos.at(i).y == punto.y){
-            return i+1;
+    for(unsigned i{}; i<poligono.n; i++){    //itera a traves de los vertices
+        if(poligono.puntos.at(i).x == punto.x and poligono.puntos.at(i).y == punto.y){1    //comparación
+            return i+1;    
         }
     }
     return -1;
@@ -142,8 +142,8 @@ Punto GetPuntoPorPosicion (const Poligono& poligono, unsigned pos){
 }
 
 Poligono& Push(Poligono& poligono, const Punto nuevoPunto){
-    if(poligono.n < poligono.puntos.size()){
-        poligono.puntos.at(poligono.n) = nuevoPunto;
+    if(poligono.n < poligono.puntos.size()){    //verifica espacio
+        poligono.puntos.at(poligono.n) = nuevoPunto;    //indice poligono.n
         poligono.n++;
     }
     return poligono;
@@ -151,17 +151,17 @@ Poligono& Push(Poligono& poligono, const Punto nuevoPunto){
 
 Poligono& Pop(Poligono& poligono){
     if(poligono.n > 0){
-        poligono.n--;
+        poligono.n--;    //decrementa para eliminarlo
     }
     return poligono;
 }
 
 Poligono& Add(Poligono& poligono, const Punto& punto, unsigned pos) {
-    if (poligono.n < poligono.puntos.size()) {
+    if (poligono.n < poligono.puntos.size()) {    //verifica espacio
         for (unsigned i=poligono.n; i > pos; i--) {
-            poligono.puntos.at(i) = poligono.puntos.at(i-1);
+            poligono.puntos.at(i) = poligono.puntos.at(i-1);    //desplazamiento
         }
-            poligono.puntos.at(pos-1) = punto;
+            poligono.puntos.at(pos-1) = punto;    
             poligono.n++;
         return poligono;
     }
@@ -169,12 +169,12 @@ Poligono& Add(Poligono& poligono, const Punto& punto, unsigned pos) {
 }
 
 Poligono& RemovePorPunto(Poligono& poligono, const Punto puntoToRemove){
-    for(unsigned i{}; i<poligono.n; i++){
-        if(poligono.puntos.at(i).x == puntoToRemove.x and poligono.puntos.at(i).y == puntoToRemove.y){
+    for(unsigned i{}; i<poligono.n; i++){    
+        if(poligono.puntos.at(i).x == puntoToRemove.x and poligono.puntos.at(i).y == puntoToRemove.y){    //comparac coordenadas
             for(unsigned j=i; j<poligono.n; j++){
-                poligono.puntos.at(j) = poligono.puntos.at(j+1);
+                poligono.puntos.at(j) = poligono.puntos.at(j+1);    //desplazamiento
             }
-            poligono.n--;
+            poligono.n--;    
             return poligono;
         }
     }
@@ -183,9 +183,9 @@ Poligono& RemovePorPunto(Poligono& poligono, const Punto puntoToRemove){
 
 Poligono& RemovePorPosicion(Poligono& poligono, unsigned pos) {
     for (unsigned i{}; i < poligono.n; i++) {
-        if (i == pos-1) {
+        if (i == pos-1) {    //indice = pos deseada?
             for (unsigned j = i; j < poligono.n; j++) {
-                poligono.puntos.at(j) = poligono.puntos.at(j + 1);
+                poligono.puntos.at(j) = poligono.puntos.at(j + 1);    //desplazamiento
             }
             poligono.n--;
             return poligono;
