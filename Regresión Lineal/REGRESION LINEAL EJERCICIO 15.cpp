@@ -1,21 +1,18 @@
 #include <iostream>
 #include <vector>
 
-// Prototipo para la función que calcula la pendiente y la ordenada al origen
+// Prototipos
 void getPyO(const std::vector<double>& x, const std::vector<double>& y, double& pendiente, double& ordenada);
 
-// Prototipo para la función que calcula el valor de S (suma de los cuadrados de las diferencias)
 double getS(const std::vector<double>& x, const std::vector<double>& y, double pendiente, double ordenada);
 
-// Prototipo para la función que calcula Sxx, Syy, y Sxy
 void calcularSxxSyySxy(const std::vector<double>& x, const std::vector<double>& y, double& sxx, double& syy, double& sxy);
 
-// Prototipo para la función que calcula el coeficiente de determinación (R^2)
 double getR2(const std::vector<double>& x, const std::vector<double>& y, double& pendiente, double& ordenada);
 /*-----------------------------------------------------------------------------------------------------------------*/
 
 int main(){
-//Ejercicio de ejemplo
+//Ejercicio 15 de ejemplo
 std::vector<double> X = {60.0 , 63.0 , 70.0 , 80.0 , 90.0 , 94.0 , 100.0};
 std::vector<double> Y = {1.0 , 0.0 , 4.0 , 3.0 , 5.0 , 8.0 , 7.0 , 6.0};
 
